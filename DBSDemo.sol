@@ -1,62 +1,20 @@
-# Solidity Introduction
-
-**Table of Content:**
-
-- [Solidity Introduction](#solidity-introduction)
-  - [Prerequisite](#prerequisite)
-  - [First Smart Contract](#first-smart-contract)
-  - [Deploy your Smart Contract](#deploy-your-smart-contract)
-  - [Blockchain Network](#blockchain-network)
-  - [Solidity Basics- Variables](#solidity-basics--variables)
-  - [Mapping and Structs](#mapping-and-structs)
-  - [Deposit and withdraw](#deposit-and-withdraw)
-  - [Smart Contract Life-cycle](#smart-contract-life-cycle)
-  - [Complex Examples - Map and Struct](#complex-examples---map-and-struct)
-  - [Known Facts](#known-facts)
-  - [Exception Handling](#exception-handling)
-    - [Add a Require](#add-a-require)
-    - [Add an Assert](#add-an-assert)
-      - [Difference between require and assert](#difference-between-require-and-assert)
-    - [Try/Catch](#trycatch)
-
-## Prerequisite
-
-1. Remix IDE - https://remix.ethereum.org/
-2. MetaMax Setup
-
-## First Smart Contract
-
-```js
-// SPDX-License-Identifier: GPL-3.0
-
 pragma solidity ^0.8.1;
+
+/**
+First Smart Contract
+*/
+
+// SPDX-License-Identifier: GPL-3.0
 
 contract Contract01 {
     string public myString = "hello world";
 }
-```
 
-**Note:** 'public' will generate automatic getter
-
-## Deploy your Smart Contract
-
-1. Open "Deploy & Run Transactions" plugin
-2. Injected web3
-3. Connect and Deploy
-4. Interact with contract
-
-## Blockchain Network
-
-1. Injected web3
-2. Javascript VM
-3. Web3 Provider
-
+/**
 ## Solidity Basics- Variables
+*/
 
-```js
-pragma solidity ^0.8.1;
-
-contract Person {
+contract Contract02 {
     string public name;
     uint256 public age;
     address public paddress;
@@ -75,15 +33,13 @@ contract Person {
         return (name, age, paddress);
     }
 }
-```
 
-**Overflow and Underflow:**
+/**
+## **Overflow and Underflow:**
+*/
+// pragma solidity 0.7.0;
 
-```js
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity 0.7.0;
-
-contract RolloverExample {
+contract Contract03 {
     uint8 public myUint8;
 
     function decrement() public {
@@ -94,15 +50,14 @@ contract RolloverExample {
         myUint8++;
     }
 }
-```
 
-**Error:**
+/**
+## Error: **Overflow and Underflow:**
+*/
 
-```js
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity 0.8.0;
+// pragma solidity 0.8.0;
 
-contract RolloverExample2 {
+contract Contract04 {
     uint8 public myUint8;
 
     function decrement() public {
@@ -113,15 +68,14 @@ contract RolloverExample2 {
         myUint8++;
     }
 }
-```
 
-**Unchecked:**
+/**
+## Unchecked: **Overflow and Underflow:**
+*/
 
-```js
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity 0.8.0;
+// pragma solidity 0.8.0;
 
-contract RolloverExample2 {
+contract Contract05 {
     uint8 public myUint8;
 
     function decrement() public {
@@ -136,16 +90,12 @@ contract RolloverExample2 {
         }
     }
 }
-```
 
+/**
 ## Mapping and Structs
+ */
 
-![](mapping_struct.png)
-
-```js
-pragma solidity ^0.8.4;
-
-contract MappingsStructExample {
+contract Contract05_01 {
     struct Payment {
         uint256 amount;
         uint256 timestamp;
@@ -163,26 +113,12 @@ contract MappingsStructExample {
         return address(this).balance;
     }
 }
-```
 
-**Ethereum Denominations**
-
-- A short reminder on Ethereum Denominations. Wei is the smallest, Ether = 10^18 Wei.
-
-| Unit  | Wei Exp | Wei                       |
-| ----- | ------- | ------------------------- |
-| wei   | 1       | 1                         |
-| Kwei  | 10^3    | 1,000                     |
-| Mwei  | 10^6    | 1,000,000                 |
-| Gwei  | 10^9    | 1,000,000,000             |
-| Ether | 10^18   | 1,000,000,000,000,000,000 |
-
+/**
 ## Deposit and withdraw
+*/
 
-```js
-pragma solidity ^0.8.1;
-
-contract SendMoneyExample {
+contract Contract06 {
     uint256 public balanceReceived;
 
     function receiveMoney() public payable {
@@ -193,16 +129,12 @@ contract SendMoneyExample {
         return address(this).balance;
     }
 }
-```
 
-**Withdraw**
+/**
+## Deposit and withdraw
+*/
 
-```js
-// SPDX-License-Identifier: GPL-3.0
-
-pragma solidity ^0.8.1;
-
-contract SendMoneyExample1 {
+contract Contract07 {
     uint256 public balanceReceived;
 
     function receiveMoney() public payable {
@@ -219,16 +151,12 @@ contract SendMoneyExample1 {
         to.transfer(getBalance());
     }
 }
-```
 
-**Withdraw to a account**
+/**
+ ## Withdraw to a account
+ */
 
-```js
-// SPDX-License-Identifier: GPL-3.0
-
-pragma solidity ^0.8.1;
-
-contract SendMoneyExample {
+contract Contract08 {
     uint256 public balanceReceived;
 
     function receiveMoney() public payable {
@@ -248,31 +176,24 @@ contract SendMoneyExample {
         _to.transfer(getBalance());
     }
 }
-```
 
-## Smart Contract Life-cycle
+/**
+## Unsecure Smart Contract**
+*/
 
-**Unsecure Smart Contract**
-
-```js
-pragma solidity ^0.8.1;
-
-contract StartStopUpdateExample {
+contract Contract09 {
     function sendMoney() public payable {}
 
     function withdrawAllMoney(address payable _to) public {
         _to.transfer(address(this).balance);
     }
 }
-```
 
-**constructor and ownership**
+/**
+## constructor and ownership**
+*/
 
-```js
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.1;
-
-contract StartStopUpdateExample {
+contract Contract10 {
     address public owner;
 
     constructor() {
@@ -286,15 +207,12 @@ contract StartStopUpdateExample {
         _to.transfer(address(this).balance);
     }
 }
-```
 
-**Pause and destroy**
+/**
+## Pause and destroy**
+ */
 
-```js
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.1;
-
-contract StartStopUpdateExample {
+contract Contract11 {
     address public owner;
     bool public paused;
 
@@ -320,14 +238,12 @@ contract StartStopUpdateExample {
         selfdestruct(_to);
     }
 }
-```
 
-## Complex Examples - Map and Struct
+/**
+## Send Money
+ */
 
-**Send Money:**
-
-```js
-contract SendMoneyContract {
+contract Contract12 {
     struct Payment {
         uint256 amount;
         uint256 timestamp;
@@ -358,12 +274,12 @@ contract SendMoneyContract {
         balanceReceived[msg.sender].numPayments++;
     }
 }
-```
 
-**Withdraw Money**:\*\*
+/**
+## Withdraw Money
+ */
 
-```js
-contract SendMoneyWithWithdraw is SendMoneyContract {
+contract Contract13 is Contract12 {
     function withdrawMoney(address payable _to, uint256 _amount) public {
         require(
             _amount <= balanceReceived[msg.sender].totalBalance,
@@ -379,45 +295,12 @@ contract SendMoneyWithWithdraw is SendMoneyContract {
         _to.transfer(balanceToSend);
     }
 }
-```
 
-## Known Facts
-
-- Mapping has no Length
-
-- Mappings have no length. It's important to understand this. Arrays have a length, but, because how mappings are stored internally, they do not have a length.
-
-> Let's say you have a mapping mapping(uint256 => uint) myMapping, then all elements myMapping[0], myMapping[1], myMapping[123123], ... are already initialized with the default value. If you map uint256 to uint, then you map key-type "uint" to value-type "uint".
-
-- Structs are initialized with their default value
-
-Similar to anything else in Solidity, structs are initialized with their default value as well.
-
-If you have a struct
-
-```
-struct Payment {
-    uint256 amount;
-    uint256 timestamp;
-}
-```
-
-and you have a mapping mapping(uint256 => Payment) myMapping, then you can access already all possible uint256 keys with the default values. This would produce no error:
-myMapping[0].amount, or myMapping[123123].amount, or myMapping[5555].timestamp.
-
-Similar, you can set any value for any mapping key:
-
-myMapping[1].amount = 123 is perfectly fine.
-
+/**
 ## Exception Handling
+ */
 
-- Require, Assert in Solidity
-- Try Catch
-
-```js
-pragma solidity 0.6.12;
-
-contract ExceptionExample {
+contract Contract14 {
     mapping(address => uint256) public balanceReceived;
 
     function receiveMoney() public payable {
@@ -431,12 +314,12 @@ contract ExceptionExample {
         }
     }
 }
-```
 
-### Add a Require
+/**
+## Add a Require
+ */
 
-```js
-contract ExceptionRequireExample {
+contract Contract15 {
     mapping(address => uint256) public balanceReceived;
 
     function receiveMoney() public payable {
@@ -454,14 +337,12 @@ contract ExceptionRequireExample {
         _to.transfer(_amount);
     }
 }
-```
 
-### Add an Assert
+/**
+## Add an Assert
+ */
 
-```js
-pragma solidity 0.6.12;
-
-contract ExceptionAssertExample {
+contract Contract16 {
     mapping(address => uint64) public balanceReceived;
 
     function receiveMoney() public payable {
@@ -470,55 +351,26 @@ contract ExceptionAssertExample {
         assert(balanceReceived[msg.sender] >= uint64(msg.value));
     }
 }
-```
 
-#### Difference between require and assert
-
-**Use require() to:**
-
-- Validate user inputs
-- Validate the response from an external contract
-  ie. use require(external.send(amount))
-- Validate state conditions prior to executing state changing operations, for example in an owned contract situation
-- Generally, you should use require more often,
-- Generally, it will be used towards the beginning of a function.
-
-  **Use assert() to:**
-
-- check for overflow/underflow
-- check invariants
-- validate contract state after making changes
-- avoid conditions which should never, ever be possible.
-- Generally, you should use assert less often
-- Generally, it will be use towards the end of your function.
-- Basically, assert is just there to prevent anything really bad from happening, but it shouldn't be possible for the condition to evaluate to false.
-
-[Read more](https://ethereum.stackexchange.com/questions/15166/difference-between-require-and-assert-and-the-difference-between-revert-and-thro/24185)
-
+/**
 ### Try/Catch
+ */
 
-- Sample code which throw error all time
-
-```js
-//SPDX-License-Idenfitier: MIT
-pragma solidity 0.8.4;
-
-contract WillThrow {
+contract Contract17WillThrow {
     function aFunction() public pure {
         require(false, "Error message");
     }
 }
-```
 
-- Adding try-Catch: Recently introduced(v0.6+)
-
-```js
+/**
+### Try/Catch
+ */
 /* rest of the code*/
-contract ErrorHandling {
+contract Contract17ErrorHandling {
     event ErrorLogging(string reason);
 
     function catchError() public {
-        WillThrow will = new WillThrow();
+        Contract17WillThrow will = new Contract17WillThrow();
         try will.aFunction() {
             //here we could do something if it works
         } catch Error(string memory reason) {
@@ -526,4 +378,3 @@ contract ErrorHandling {
         }
     }
 }
-```
