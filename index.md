@@ -26,7 +26,7 @@
 
 ## First Smart Contract
 
-```js
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity ^0.8.1;
@@ -53,7 +53,7 @@ contract Contract01 {
 
 ## Solidity Basics- Variables
 
-```js
+```solidity
 pragma solidity ^0.8.1;
 
 contract Person {
@@ -79,7 +79,7 @@ contract Person {
 
 **Overflow and Underflow:**
 
-```js
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.7.0;
 
@@ -98,7 +98,7 @@ contract RolloverExample {
 
 **Error:**
 
-```js
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.0;
 
@@ -117,7 +117,7 @@ contract RolloverExample2 {
 
 **Unchecked:**
 
-```js
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.0;
 
@@ -142,7 +142,7 @@ contract RolloverExample2 {
 
 ![](mapping_struct.png)
 
-```js
+```solidity
 pragma solidity ^0.8.4;
 
 contract MappingsStructExample {
@@ -179,7 +179,7 @@ contract MappingsStructExample {
 
 ## Deposit and withdraw
 
-```js
+```solidity
 pragma solidity ^0.8.1;
 
 contract SendMoneyExample {
@@ -197,7 +197,7 @@ contract SendMoneyExample {
 
 **Withdraw**
 
-```js
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity ^0.8.1;
@@ -223,7 +223,7 @@ contract SendMoneyExample1 {
 
 **Withdraw to a account**
 
-```js
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity ^0.8.1;
@@ -254,7 +254,7 @@ contract SendMoneyExample {
 
 **Unsecure Smart Contract**
 
-```js
+```solidity
 pragma solidity ^0.8.1;
 
 contract StartStopUpdateExample {
@@ -268,7 +268,7 @@ contract StartStopUpdateExample {
 
 **constructor and ownership**
 
-```js
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.1;
 
@@ -290,7 +290,7 @@ contract StartStopUpdateExample {
 
 **Pause and destroy**
 
-```js
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.1;
 
@@ -326,7 +326,7 @@ contract StartStopUpdateExample {
 
 **Send Money:**
 
-```js
+```solidity
 contract SendMoneyContract {
     struct Payment {
         uint256 amount;
@@ -362,7 +362,7 @@ contract SendMoneyContract {
 
 **Withdraw Money**:\*\*
 
-```js
+```solidity
 contract SendMoneyWithWithdraw is SendMoneyContract {
     function withdrawMoney(address payable _to, uint256 _amount) public {
         require(
@@ -414,7 +414,7 @@ myMapping[1].amount = 123 is perfectly fine.
 - Require, Assert in Solidity
 - Try Catch
 
-```js
+```solidity
 pragma solidity 0.6.12;
 
 contract ExceptionExample {
@@ -435,7 +435,7 @@ contract ExceptionExample {
 
 ### Add a Require
 
-```js
+```solidity
 contract ExceptionRequireExample {
     mapping(address => uint256) public balanceReceived;
 
@@ -458,7 +458,7 @@ contract ExceptionRequireExample {
 
 ### Add an Assert
 
-```js
+```solidity
 pragma solidity 0.6.12;
 
 contract ExceptionAssertExample {
@@ -499,7 +499,7 @@ contract ExceptionAssertExample {
 
 - Sample code which throw error all time
 
-```js
+```solidity
 //SPDX-License-Idenfitier: MIT
 pragma solidity 0.8.4;
 
@@ -512,7 +512,7 @@ contract WillThrow {
 
 - Adding try-Catch: Recently introduced(v0.6+)
 
-```js
+```solidity
 /* rest of the code*/
 contract ErrorHandling {
     event ErrorLogging(string reason);
