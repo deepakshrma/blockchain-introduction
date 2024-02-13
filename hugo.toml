@@ -2,3 +2,7 @@ baseURL = 'https://decipher.dev/blockchain-introduction/'
 languageCode = 'en-us'
 title = 'blockchain Introduction'
 theme = 'PaperMod'
+
+[services]
+  [services.googleAnalytics]
+    ID = 'G-VX1V9NRMDC'
